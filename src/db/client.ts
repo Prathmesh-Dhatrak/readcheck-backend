@@ -1,5 +1,5 @@
-import { Pool, PoolClient } from "../deps.ts";
-import { config } from "../config.ts";
+import { Pool, PoolClient } from "../../deps.ts";
+import { config } from "../../config.ts";
 
 class Database {
     private pool: Pool;

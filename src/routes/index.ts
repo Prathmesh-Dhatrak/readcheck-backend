@@ -1,4 +1,4 @@
-import { Router } from "../deps.ts";
+import { Router } from "../../deps.ts";
 import { signup, login } from "../controllers/auth.ts";
 import { 
   getArticles, 

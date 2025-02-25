@@ -1,4 +1,4 @@
-import { RouterMiddleware } from "../deps.ts";
+import { RouterMiddleware } from "../../deps.ts";
 import { createUser, validateUser } from "../models/user.ts";
 import { generateToken } from "../middleware/auth.ts";
 import { 

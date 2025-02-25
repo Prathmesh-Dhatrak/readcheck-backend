@@ -1,4 +1,4 @@
-import { RouterMiddleware } from "../deps.ts";
+import { RouterMiddleware } from "../../deps.ts";
 import { findArticleById, findArticlesByUserId, createArticle, updateArticle, deleteArticle, markArticleAsRead } from "../models/article.ts";
 import { analyzeContent, fetchWebContent } from "../services/anthropic.ts";
 import { AuthContext } from "../middleware/auth.ts";
@@ -32,9 +32,9 @@ export const getArticle: RouterMiddleware<string> = async (ctx) => {
     throw new UnauthorizedError("User authentication required");
   }
   
-  const id = Number(ctx.params.id);
+  const id = ctx.params.id;
   
-  if (isNaN(id)) {
+  if (!id || !isValidUUID(id)) {
     throw new BadRequestError("Invalid article ID");
   }
   
@@ -100,9 +100,9 @@ export const updateArticleController: RouterMiddleware<string> = async (ctx) => 
     throw new UnauthorizedError("User authentication required");
   }
   
-  const id = Number(ctx.params.id);
+  const id = ctx.params.id;
   
-  if (isNaN(id)) {
+  if (!id || !isValidUUID(id)) {
     throw new BadRequestError("Invalid article ID");
   }
   
@@ -141,9 +141,9 @@ export const deleteArticleController: RouterMiddleware<string> = async (ctx) => 
     throw new UnauthorizedError("User authentication required");
   }
   
-  const id = Number(ctx.params.id);
+  const id = ctx.params.id;
   
-  if (isNaN(id)) {
+  if (!id || !isValidUUID(id)) {
     throw new BadRequestError("Invalid article ID");
   }
   
@@ -166,9 +166,9 @@ export const verifyArticle: RouterMiddleware<string> = async (ctx) => {
     throw new UnauthorizedError("User authentication required");
   }
   
-  const id = Number(ctx.params.id);
+  const id = ctx.params.id;
   
-  if (isNaN(id)) {
+  if (!id || !isValidUUID(id)) {
     throw new BadRequestError("Invalid article ID");
   }
   
@@ -216,3 +216,9 @@ export const verifyArticle: RouterMiddleware<string> = async (ctx) => {
     };
   }
 };
+
+// Helper function to validate UUID format
+function isValidUUID(uuid: string): boolean {
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  return uuidRegex.test(uuid);
+}

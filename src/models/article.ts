@@ -2,7 +2,7 @@ import { db } from "../db/client.ts";
 import { Article } from "../types/index.ts";
 import { DatabaseError } from "../utils/errors.ts";
 
-export async function findArticleById(id: number): Promise<Article | null> {
+export async function findArticleById(id: string): Promise<Article | null> {
   try {
     const result = await db.query(
       "SELECT * FROM blog WHERE id = $1",
@@ -19,7 +19,7 @@ export async function findArticleById(id: number): Promise<Article | null> {
   }
 }
 
-export async function findArticlesByUserId(userId: number): Promise<Article[]> {
+export async function findArticlesByUserId(userId: string): Promise<Article[]> {
   try {
     const result = await db.query(
       "SELECT * FROM blog WHERE user_id = $1 ORDER BY created_at DESC",
@@ -33,7 +33,7 @@ export async function findArticlesByUserId(userId: number): Promise<Article[]> {
 }
 
 export async function createArticle(
-  userId: number,
+  userId: string,
   url: string,
   title: string,
   question: string,
@@ -54,8 +54,8 @@ export async function createArticle(
 }
 
 export async function updateArticle(
-  id: number,
-  userId: number,
+  id: string,
+  userId: string,
   updates: Partial<Article>
 ): Promise<Article | null> {
   try {
@@ -95,7 +95,7 @@ export async function updateArticle(
   }
 }
 
-export async function deleteArticle(id: number, userId: number): Promise<boolean> {
+export async function deleteArticle(id: string, userId: string): Promise<boolean> {
   try {
     const result = await db.query(
       "DELETE FROM blog WHERE id = $1 AND user_id = $2 RETURNING id",
@@ -108,7 +108,7 @@ export async function deleteArticle(id: number, userId: number): Promise<boolean
   }
 }
 
-export async function markArticleAsRead(id: number, userId: number): Promise<Article | null> {
+export async function markArticleAsRead(id: string, userId: string): Promise<Article | null> {
   try {
     const result = await db.query(
       "UPDATE blog SET is_read = TRUE WHERE id = $1 AND user_id = $2 RETURNING *",

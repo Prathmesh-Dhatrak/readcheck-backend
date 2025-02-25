@@ -1,4 +1,4 @@
-export {
+export { 
     Application,
     Router,
     Context,
@@ -10,3 +10,8 @@ export {
 export { load } from "https://deno.land/std@0.212.0/dotenv/mod.ts";
 export { Pool } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
 export type { PoolClient } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
+export { 
+    ClientPostgreSQL,
+    AbstractMigration
+} from "https://deno.land/x/nessie@2.0.10/mod.ts";
+export type { NessieConfig } from "https://deno.land/x/nessie@2.0.10/mod.ts";
