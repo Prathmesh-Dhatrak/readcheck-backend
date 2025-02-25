@@ -1,6 +1,6 @@
 import { RouterMiddleware } from "../deps.ts";
 import { findArticleById, findArticlesByUserId, createArticle, updateArticle, deleteArticle, markArticleAsRead } from "../models/article.ts";
-import { analyzeContent, fetchWebContent } from "../services/openai.ts";
+import { analyzeContent, fetchWebContent } from "../services/anthropic.ts";
 import { AuthContext } from "../middleware/auth.ts";
 import { 
   UnauthorizedError, 
