@@ -19,31 +19,41 @@ Backend service for the ReadCheck application, which helps users manage their re
 ## Project Structure
 
 ```
-/src
-├── config.ts               # Configuration variables
-├── deps.ts                 # Dependencies
-├── main.ts                 # Application entry point
-├── controllers/            # Request handlers
-│   ├── auth.ts             # Authentication controllers
-│   └── article.ts          # Article management controllers
-├── db/                     # Database related files
-│   ├── client.ts           # Database client
-│   └── setup.ts            # Database setup
-├── middleware/             # Middleware functions
-│   ├── auth.ts             # Authentication middleware
-│   └── error.ts            # Error handling middleware
-├── models/                 # Data access layer
-│   ├── user.ts             # User model
-│   └── article.ts          # Article model
-├── routes/                 # API routes
-│   └── index.ts            # Route definitions
-├── services/               # External service integrations
-│   └── anthropic.ts        # Anthropic Claude service
-├── types/                  # Type definitions
-│   └── index.ts            # Shared types
-└── utils/                  # Utility functions
-    ├── jwt.ts              # JWT utility functions
-    └── password.ts         # Password hashing utilities
+/
+├── config.ts                 # Configuration variables
+├── deps.ts                   # Dependencies
+├── main.ts                   # Application entry point
+├── deno.json                 # Deno configuration
+├── deno.lock                 # Deno lock file
+├── nessie.config.ts          # Database migration configuration
+├── schema.sql                # Database schema
+└── src/
+    ├── controllers/          # Request handlers
+    │   ├── auth.ts           # Authentication controllers
+    │   └── article.ts        # Article management controllers
+    ├── db/                   # Database related files
+    │   ├── client.ts         # Database client
+    │   ├── setup.ts          # Database setup
+    │   ├── migrate.ts        # Migration utilities
+    │   └── migrations/       # Database migrations
+    │       └── migration_files.ts
+    ├── middleware/           # Middleware functions
+    │   ├── auth.ts           # Authentication middleware
+    │   └── error.ts          # Error handling middleware
+    ├── models/               # Data access layer
+    │   ├── user.ts           # User model
+    │   └── article.ts        # Article model
+    ├── routes/               # API routes
+    │   └── index.ts          # Route definitions
+    ├── services/             # External service integrations
+    │   └── anthropic.ts      # Anthropic Claude service
+    ├── types/                # Type definitions
+    │   └── index.ts          # Shared types
+    └── utils/                # Utility functions
+        ├── errors.ts         # Error utility classes
+        ├── jwt.ts            # JWT utility functions
+        ├── password.ts       # Password hashing utilities
+        └── uuid.ts           # UUID generation utilities
 ```
 
 ## API Endpoints
@@ -404,7 +414,7 @@ ENV=development
 1. Clone the repository
 2. Install dependencies:
    ```
-   deno cache src/deps.ts
+   deno cache deps.ts
    ```
 3. Run the application:
    ```
