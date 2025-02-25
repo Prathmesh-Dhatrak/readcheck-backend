@@ -1,4 +1,4 @@
-import { Context, Middleware } from "../deps.ts";
+import { Context, Middleware } from "../../deps.ts";
 import { createJWT, verifyJWT } from "../utils/jwt.ts";
 import { User } from "../types/index.ts";
 import { UnauthorizedError } from "../utils/errors.ts";
@@ -23,7 +23,7 @@ export function authMiddleware(): Middleware {
             
             // Validate that the payload has the required User properties
             if (
-                typeof payload.id === 'number' && 
+                typeof payload.id === 'string' && 
                 typeof payload.email === 'string'
             ) {
                 // Now it's safe to cast to User

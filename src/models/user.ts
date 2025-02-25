@@ -3,7 +3,7 @@ import { User } from "../types/index.ts";
 import { hashPassword, comparePasswords } from "../utils/password.ts";
 import { DatabaseError, ConflictError } from "../utils/errors.ts";
 
-export async function findUserById(id: number): Promise<User | null> {
+export async function findUserById(id: string): Promise<User | null> {
     try {
         const result = await db.query(
             "SELECT id, email FROM users WHERE id = $1",
@@ -71,7 +71,7 @@ export async function validateUser(email: string, password: string): Promise<Use
 
         // Define the type for the database result including password_hash
         interface UserWithPassword {
-            id: number;
+            id: string; // Changed from number to string for UUID
             email: string;
             password_hash: string;
         }

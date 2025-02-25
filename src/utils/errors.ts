@@ -1,4 +1,4 @@
-import { Status } from "../deps.ts";
+import { Status } from "../../deps.ts";
 
 // Base application error class
 export class AppError extends Error {

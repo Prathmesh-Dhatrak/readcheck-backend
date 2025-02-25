@@ -1,11 +1,11 @@
 export interface User {
-    id: number;
+    id: string; // Changed from number to string for UUID
     email: string;
 }
 
 export interface Article {
-    id: number;
-    user_id: number;
+    id: string; // Changed from number to string for UUID
+    user_id: string; // Changed from number to string for UUID
     url: string;
     title: string;
     question: string;

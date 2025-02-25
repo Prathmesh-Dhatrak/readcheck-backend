@@ -1,4 +1,4 @@
-import { config } from "../config.ts";
+import { config } from "../../config.ts";
 
 export async function createJWT(payload: Record<string, unknown>): Promise<string> {
   const header = {

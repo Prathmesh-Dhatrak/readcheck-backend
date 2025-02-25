@@ -1,5 +1,5 @@
-import { Context, Status } from "../deps.ts";
-import { config } from "../config.ts";
+import { Context, Status } from "../../deps.ts";
+import { config } from "../../config.ts";
 
 // Enhanced error interface
 interface ErrorWithStatus extends Error {
