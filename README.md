@@ -6,7 +6,7 @@ Backend service for the ReadCheck application, which helps users manage their re
 
 - User authentication (signup/login)
 - Article management (save, retrieve, update, delete)
-- Content analysis with OpenAI GPT for generating verification questions
+- Content analysis with Anthropic Claude for generating verification questions
 - Answer verification to mark articles as read
 
 ## Tech Stack
@@ -14,7 +14,7 @@ Backend service for the ReadCheck application, which helps users manage their re
 - **Runtime**: Deno
 - **Language**: TypeScript
 - **Database**: PostgreSQL
-- **External APIs**: OpenAI GPT
+- **External APIs**: Anthropic Claude
 
 ## Project Structure
 
@@ -38,7 +38,7 @@ Backend service for the ReadCheck application, which helps users manage their re
 ├── routes/                 # API routes
 │   └── index.ts            # Route definitions
 ├── services/               # External service integrations
-│   └── openai.ts           # OpenAI GPT service
+│   └── anthropic.ts        # Anthropic Claude service
 ├── types/                  # Type definitions
 │   └── index.ts            # Shared types
 └── utils/                  # Utility functions
@@ -385,7 +385,7 @@ curl -X GET http://localhost:8000/api/user \
 
 1. Deno installed (version 1.35 or higher)
 2. PostgreSQL database server
-3. OpenAI API key
+3. Anthropic API key
 
 ### Environment Variables
 
@@ -395,7 +395,7 @@ Create a `.env` file in the project root with the following variables:
 PORT=8000
 DB_URL=postgres://user:password@localhost:5432/read-check-db
 JWT_SECRET=your-secure-jwt-secret
-OPENAI_API_KEY=your-openai-api-key
+ANTHROPIC_API_KEY=your-anthropic-api-key
 ENV=development
 ```
 
